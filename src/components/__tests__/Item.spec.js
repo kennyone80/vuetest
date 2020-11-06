@@ -6,6 +6,6 @@ describe('Item.vue', () => {
     // Returns a wrapper containing a mounted Item
     const wrapper = mount(Item)
     // Returns the Item text content
-    expect(wrapper.vm.$el.textContent).toContain('item')
+    expect(wrapper.text()).toContain('item')
   })
 })
