@@ -62,6 +62,7 @@
     "transform": {
       "^.+\\.js$": "babel-jest",
       "^.+\\.vue$": "vue-jest"
-    }
+    },
+    "testEnvironnement": "node"
   }
 }
