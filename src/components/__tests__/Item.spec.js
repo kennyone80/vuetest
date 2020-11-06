@@ -6,6 +6,7 @@ describe('Item.vue', () => {
     // Returns a wrapper containing a mounted Item
     const wrapper = shallowMount(Item)
     // Returns the Item text content
+    debugger
     expect(wrapper.text()).toContain('item')
   })
 })
