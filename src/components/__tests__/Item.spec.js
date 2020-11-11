@@ -2,15 +2,17 @@ import Item from '../Item.vue'
 import { shallowMount } from '@vue/test-utils'
 
 describe('Item.vue', () => {
-  test('renders "item"', () => {
+  test('renders a link to the item.url with item.title as text', () => {
     const item = {
-      url: 10
+      url: 'http://some-url.com',
+      title: 'some title'
     }
-    // Passes the item object as props to Item
+    // Passes prop data
     const wrapper = shallowMount(Item, {
       propsData: { item }
     })
-    // Uses toContain to assert the item.url exists in rendered component text
-    expect(wrapper.text()).toContain(item.url)
+    const a = wrapper.find('a')
+    expect(a.text()).toBe(item.title)
+    expect(a.attributes().href).toBe(item.url)
   })
 })
