@@ -11,7 +11,7 @@ export default {
   components: {
     Item
   },
-  data() {
+  data () {
     return {
       displayItems: window.items
     }
