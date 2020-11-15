@@ -15,4 +15,24 @@ describe('Item.vue', () => {
     expect(a.text()).toBe(item.title)
     expect(a.attributes().href).toBe(item.url)
   })
+  test('renders item.score as text', () => {
+    const item = {
+      score: '10'
+    }
+    // Passes prop data
+    const wrapper = shallowMount(Item, {
+      propsData: { item }
+    })
+    expect(wrapper.text()).toBe(item.score)
+  })
+  test('renders item.author as text', () => {
+    const item = {
+      author: 'eric bernier'
+    }
+    // Passes prop data
+    const wrapper = shallowMount(Item, {
+      propsData: { item }
+    })
+    expect(wrapper.text()).toBe(item.author)
+  })
 })
