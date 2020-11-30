@@ -11,4 +11,26 @@ describe('ProgressBar.vue', () => {
     const wrapper = shallowMount(ProgressBar)
     expect(wrapper.element.style.width).toBe('0%')
   })
+
+  // test('displays the bar when start is called', () => {
+  //   const wrapper = shallowMount(ProgressBar)
+  //   expect(wrapper.classes()).toContain('hidden')
+  //   wrapper.vm.start()
+  //   expect(wrapper.classes()).not.toContain(['hidden'])
+  // })
+
+  test('sets the bar to 100% width when finish is called', () => {
+    const wrapper = shallowMount(ProgressBar)
+    wrapper.vm.start()
+    wrapper.vm.finish()
+    expect(wrapper.element.style.width).toBe('100%')
+  })
+
+  test('hide the bar when finish is called', () => {
+    const wrapper = shallowMount(ProgressBar)
+    expect(wrapper.classes()).toContain('hidden')
+    wrapper.vm.start()
+    wrapper.vm.finish()
+    expect(wrapper.classes()).not.toContain(['hidden'])
+  })
 })
