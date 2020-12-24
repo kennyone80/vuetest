@@ -1,30 +1,26 @@
 <template>
-    <div
-        :class="{
-            hidden: hidden
-        }"
-        :style="{
-            'width': `${percent}%`
-            }">
-    </div>
+  <div
+    :class="{
+    hidden: hidden
+  }"
+  :style="{
+    'width': '0%'
+  }"/>
 </template>
+
 <script>
 export default {
-  data () {
+  data() {
     return {
-      hidden: true,
-      percent: 0
+      hidden: true
     }
   },
   methods: {
     start () {
       this.hidden = false
-      this.percent = 50
     },
-    finish () {
-      this.hidden = true
-      this.percent = 100
-    }
+    finish() {}
   }
 }
 </script>
+
