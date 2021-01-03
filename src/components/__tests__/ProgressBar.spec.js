@@ -28,10 +28,41 @@ describe('ProgressBar.vue', () => {
     expect(wrapper.element.style.width).toBe('50%')
   })
 
-  test('hides the bar when finish is called', () => {
+  test('hides the bar when finish is called', async () => {
     const wrapper = shallowMount(ProgressBar)
     wrapper.vm.start()
     wrapper.vm.finish()
+    await wrapper.vm.$nextTick()
     expect(wrapper.classes()).toContain('hidden')
+  })
+
+  test('clears timer when finish is called', () => {
+    jest.spyOn(window, 'clearInterval')
+    setInterval.mockReturnValue(123)
+    const wrapper = shallowMount(ProgressBar)
+    wrapper.vm.start()
+    wrapper.vm.finish()
+    expect(window.clearInterval).toHaveBeenCalledWith(123)
+  })
+
+  test('removes error class when start is called', () => {
+    const wrapper = shallowMount(ProgressBar)
+    wrapper.vm.fail()
+    wrapper.vm.start()
+    expect(wrapper.classes()).not.toContain('error')
+  })
+
+  test('sets the bar to 100% width when fail is called', async () => {
+    const wrapper = shallowMount(ProgressBar)
+    wrapper.vm.fail()
+    await wrapper.vm.$nextTick()
+    expect(wrapper.classes()).toContain('error')
+  })
+
+  test('styles the bar correctly when fail is called', async () => {
+    const wrapper = shallowMount(ProgressBar)
+    wrapper.vm.fail()
+    await wrapper.vm.$nextTick()
+    expect(wrapper.element.style.width).toBe('100%')
   })
 })
